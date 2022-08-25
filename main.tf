@@ -6,8 +6,14 @@ variable "region" {
   type = string
 }
 
+### CloudSearch ###
+
 resource "aws_cloudsearch_domain" "movies" {
   name = "movies-domain"
+
+  endpoint_options {
+    enforce_https = true
+  }
 
   timeouts {
     create = "1h"
@@ -70,6 +76,8 @@ resource "aws_cloudsearch_domain_service_access_policy" "movies" {
     delete = "1h"
   }
 }
+
+### Outputs ###
 
 output "search_endpoint" {
   value = aws_cloudsearch_domain.movies.search_service_endpoint

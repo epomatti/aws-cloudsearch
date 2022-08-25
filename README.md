@@ -14,13 +14,45 @@ Connect to the console and enable `Allow open access to the domain` for sandbox 
 
 ## Search
 
-### Upload
+### Upload documents
 
 Upload the file batch:
 
 ```sh
 aws cloudsearchdomain upload-documents \
-  --endpoint-url $cloudSearchEndpoint \
+  --endpoint-url $documentEndpoint \
   --content-type 'application/json' \
-  --documents 'movies-batch.json'
+  --documents 'movies-batch.json' \
+  --region 'us-east-1'
+```
+
+### Send a search
+
+Search with a query:
+
+```sh
+aws cloudsearchdomain search \
+  --endpoint-url $searchEndpoint \
+  --search-query 'Matrix' \
+  --region 'us-east-1'
+```
+
+### Send a search
+
+Create a suggester:
+
+```sh
+aws cloudsearch define-suggester \
+  --domain-name 'movies-domain' \
+  --suggester 'SuggesterName=TitleSuggester,DocumentSuggesterOptions={SourceField=title,FuzzyMatching=None}' \
+  --region 'us-east-1'
+```
+
+Retrieves autocomplete suggestions for a partial query string:
+
+```sh
+aws cloudsearchdomain suggest \
+  --endpoint-url $searchEndpoint \
+  --suggest-query 'Matrix' \
+  --region 'us-east-1'
 ```
