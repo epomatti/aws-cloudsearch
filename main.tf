@@ -14,29 +14,49 @@ resource "aws_cloudsearch_domain" "movies" {
     desired_replication_count = 1
   }
 
-  # index_field {
-  #   name            = "headline"
-  #   type            = "text"
-  #   search          = true
-  #   return          = true
-  #   sort            = true
-  #   highlight       = false
-  #   analysis_scheme = "_en_default_"
-  # }
+  index_field {
+    name            = "title"
+    type            = "text"
+    search          = true
+    return          = true
+    sort            = false
+    highlight       = false
+    analysis_scheme = "_en_default_"
+  }
 
-  # index_field {
-  #   name   = "price"
-  #   type   = "double"
-  #   search = true
-  #   facet  = true
-  #   return = true
-  #   sort   = true
+  index_field {
+    name            = "directors"
+    type            = "text-array"
+    search          = true
+    return          = true
+    sort            = false
+    highlight       = false
+    analysis_scheme = "_en_default_"
+  }
 
-  #   source_fields = "headline"
-  # }
+  index_field {
+    name            = "genres"
+    type            = "text-array"
+    search          = true
+    return          = true
+    sort            = false
+    highlight       = false
+    analysis_scheme = "_en_default_"
+  }
+
+  index_field {
+    name            = "actors"
+    type            = "text-array"
+    search          = true
+    return          = true
+    sort            = false
+    highlight       = false
+    analysis_scheme = "_en_default_"
+  }
+
 }
 
-resource "aws_cloudsearch_domain_service_access_policy" "movies" {
-  domain_name   = aws_cloudsearch_domain.movies.id
-  access_policy = file("${path.module}/cloudsearch-policy.json")
-}
+# resource "aws_cloudsearch_domain_service_access_policy" "movies" {
+#   domain_name   = aws_cloudsearch_domain.movies.id
+#   access_policy = file("${path.module}/cloudsearch-policy.json")
+# }
