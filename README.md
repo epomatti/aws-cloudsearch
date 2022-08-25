@@ -1,5 +1,7 @@
 # AWS CloudSearch
 
+<img src="cloudsearch.png" width="700"/>
+
 ## Infrastructure
 Create the infrastructure:
 
@@ -9,8 +11,6 @@ terraform apply -auto-approve
 ```
 
 Terraform will also create the search indexes.
-
-Connect to the console and enable `Allow open access to the domain` for sandbox only, or give it a policy with fewer permissions. For some reason Terraform is giving a hard time creating it.
 
 ## Search
 
@@ -37,14 +37,22 @@ aws cloudsearchdomain search \
   --region 'us-east-1'
 ```
 
-### Send a search
+### Get suggestions
 
 Create a suggester:
 
 ```sh
 aws cloudsearch define-suggester \
   --domain-name 'movies-domain' \
-  --suggester 'SuggesterName=TitleSuggester,DocumentSuggesterOptions={SourceField=title,FuzzyMatching=None}' \
+  --suggester 'SuggesterName=movie_suggester,DocumentSuggesterOptions={SourceField=title,FuzzyMatching=none}' \
+  --region 'us-east-1'
+```
+
+Index the documents again:
+
+```sh
+aws cloudsearch index-documents \
+  --domain-name 'movies-domain' \
   --region 'us-east-1'
 ```
 
