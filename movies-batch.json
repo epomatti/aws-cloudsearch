@@ -1,0 +1,55 @@
+[
+  {
+    "type": "add",
+    "id": "movie-00001",
+    "fields": {
+      "title": "The Matrix",
+      "directors": [
+        "Lana Wachowski",
+        "Lilly Wachowski"
+      ],
+      "genres": [
+        "Sci-fi",
+        "Action"
+      ],
+      "actors": [
+        "Reeves, Keanu"
+      ]
+    }
+  },
+  {
+    "type": "add",
+    "id": "movie-00002",
+    "fields": {
+      "title": "Home Alone",
+      "directors": [
+        "Chris Columbus"
+      ],
+      "genres": [
+        "Comedy"
+      ],
+      "actors": [
+        "Culkin, Macaulay",
+        "Pesci, Joe"
+      ]
+    }
+  },
+  {
+    "type": "add",
+    "id": "movie-00003",
+    "fields": {
+      "title": "Pulp Fiction",
+      "directors": [
+        "Quentin Tarantino"
+      ],
+      "genres": [
+        "Black Comedy",
+        "Crime"
+      ],
+      "actors": [
+        "Travolta, John",
+        "Jackson, Samuel L."
+      ]
+    }
+  }
+]
