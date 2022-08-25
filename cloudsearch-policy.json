@@ -4,9 +4,7 @@
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": [
-          "*"
-        ]
+        "AWS": "*"
       },
       "Action": [
         "cloudsearch:*"

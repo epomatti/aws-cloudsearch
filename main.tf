@@ -9,6 +9,12 @@ variable "region" {
 resource "aws_cloudsearch_domain" "movies" {
   name = "movies-domain"
 
+  timeouts {
+    create = "1h"
+    update = "1h"
+    delete = "1h"
+  }
+
   scaling_parameters {
     desired_instance_type     = "search.small"
     desired_replication_count = 1
@@ -59,4 +65,10 @@ resource "aws_cloudsearch_domain" "movies" {
 # resource "aws_cloudsearch_domain_service_access_policy" "movies" {
 #   domain_name   = aws_cloudsearch_domain.movies.id
 #   access_policy = file("${path.module}/cloudsearch-policy.json")
+
+#   timeouts {
+#     create = "1h"
+#     update = "1h"
+#     delete = "1h"
+#   }
 # }
