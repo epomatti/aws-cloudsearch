@@ -48,7 +48,7 @@ aws cloudsearch define-suggester \
   --region 'us-east-1'
 ```
 
-Index the documents again:
+Index the documents again (this can take a while):
 
 ```sh
 aws cloudsearch index-documents \
@@ -61,6 +61,8 @@ Retrieves autocomplete suggestions for a partial query string:
 ```sh
 aws cloudsearchdomain suggest \
   --endpoint-url $searchEndpoint \
+  --suggester 'movie_suggester' \
   --suggest-query 'Matrix' \
-  --region 'us-east-1'
+  --region 'us-east-1' \
+  --size 3
 ```
